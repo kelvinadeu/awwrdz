@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class AwardConfig(AppConfig):
-    name = 'award'
+class AwwardsConfig(AppConfig):
+    name = 'awwards'
