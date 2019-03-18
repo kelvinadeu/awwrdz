@@ -1,0 +1,68 @@
+{% load bootstrap4 %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  {%if title%}
+
+  <title>{{title}}</title>
+
+  {%endif%}
+
+  {% block styles %}
+  {% bootstrap_css %}
+  {% include "navbar.html" %}
+  {% endblock %}
+
+</head>
+
+<body>
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" style='margin-bottom:200px;'>
+    <div class='container'>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div id="two">
+          <a href="">
+            <img style="height:30px; width:30px;" src="
+          </a>
+
+          <a href="">
+            <img src=" https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" width=100px height=35px
+              alt="INSTAGRAM"></a>
+        </div>
+
+        <form class="form-inline" id="one" action=''>
+          <input class="form-control mr-sm-2 nav-item" style='padding-right:30px;width:120%' type="search" placeholder="Search Image.." aria-label="Search" name=title></form>
+        <br>
+        <div style='margin-left:150px;float:right;'>
+          <div id="three">
+            <i style="font-size:24px" class="fa">&#xf14e;</i>
+            <i style="font-size:24px" class="fa">&#xf08a;</i>
+            <i style="font-size:24px" class="fa">&#xf2c0;</i>
+            <a href='/profile'><i style='font-size:24px' class='fa'>&#xf2c0</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav> -->
+
+
+
+  {% block content %}
+
+  {%endblock%}
+
+
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %}
+  {% endblock %}
+
+</body>
+
+</html>
