@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator,MaxValueValidator
+
 
 
 # Create your models here.
@@ -62,5 +64,16 @@ class Comment(models.Model):
     class Meta:
         ordering = ["-id"]
 
+class Rates(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post =  models.ForeignKey(Projects,on_delete=models.CASCADE,related_name='likes')
+    design = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    usability = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)],null=True)
+    creativity = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    content = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
 
-        
+    def save_rate(self):
+            self.save()
+
+    def delete_rate(self):
+        self.delete()
