@@ -45,7 +45,12 @@
 
 # Setup/Installation Requirements
 
-#### git clone https://github.com/MaryannGitonga/Awwwards.git
+#### git clone
 #### cd Awwwards
 #### atom .
 #### code . (this is if Visual Studio Code is your preferred text editor)
+
+# To run this program
+
+#### run this command lines in your terminal:
+#### python manage.py runserver
