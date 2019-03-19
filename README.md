@@ -67,3 +67,8 @@
 #### -virtualenv
 
 #### -A text Editor
+
+# Technologies Used
+#### Django
+#### HTML/CSS
+#### Bootstrap
