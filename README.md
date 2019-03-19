@@ -19,6 +19,26 @@
 
 #### Output Example: Redirected to the sign up page
 
-####
+####The program should direct the user to the page with a single project with description and vote button:
 
-####
+#### Input Example: Click on See More
+
+#### Output Example: Redirected to the single project page with the project's description
+
+#### The program should navigate to the vote form when Vote is clicked:
+
+#### Input Example: Click on Vote button
+
+#### Output Example: A vote form pops up
+
+####The program should navigate to the profile editing form when the My Account is clicked on the navigation bar:
+
+#### Input Example: Click on My Account on the navigation bar
+
+#### Output Example: Redirected to the profile editing form
+
+#### The program should load the live site on a new tab when View Site is clicked:
+
+#### Input Example: Click on View Site
+
+#### Output Example: Live site of a specific project loads on a new tab
