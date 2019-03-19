@@ -42,3 +42,10 @@
 #### Input Example: Click on View Site
 
 #### Output Example: Live site of a specific project loads on a new tab
+
+# Setup/Installation Requirements
+
+#### git clone https://github.com/MaryannGitonga/Awwwards.git
+#### cd Awwwards
+#### atom .
+#### code . (this is if Visual Studio Code is your preferred text editor)
