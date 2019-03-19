@@ -19,7 +19,7 @@
 
 #### Output Example: Redirected to the sign up page
 
-####The program should direct the user to the page with a single project with description and vote button:
+#### The program should direct the user to the page with a single project with description and vote button:
 
 #### Input Example: Click on See More
 
@@ -31,7 +31,7 @@
 
 #### Output Example: A vote form pops up
 
-####The program should navigate to the profile editing form when the My Account is clicked on the navigation bar:
+#### The program should navigate to the profile editing form when the My Account is clicked on the navigation bar:
 
 #### Input Example: Click on My Account on the navigation bar
 
