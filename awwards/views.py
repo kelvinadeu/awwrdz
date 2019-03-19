@@ -21,3 +21,7 @@ def signup(request):
 
 def login(request):
     return render(request, 'login.html')
+
+def index(request):
+    projects = Project.objects.all()
+    return render(request, 'index.html', {"date": date,"projects": projects})
