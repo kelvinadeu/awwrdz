@@ -25,5 +25,8 @@ def login(request):
     return render(request, 'login.html')
 
 def home(request):
-    projects = Project.objects.all()
+    projects = Projects.objects.all()
     return render(request, 'home.html', {"projects": projects})
+
+def profile(request):
+    return render(request, 'profile.html')    

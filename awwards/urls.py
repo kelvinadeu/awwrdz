@@ -6,10 +6,11 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url('',views.signup, name='signup'),
-    url('login',views.login, name='login'),
-    url('^$',views.home,name = 'home'),
-    # url(r'accounts/', include('django.registration.auth.urls'))
+    url(r'^$',views.signup, name='signup'),
+    url(r'login',views.login, name='login'),
+    url(r'profile',views.profile, name='profile'),
+    url('',views.home,name = 'home'),
+    url(r'accounts/', include('django.contrib.auth.urls')),
 
     # url('admin/',admin.site.urls)
 ]
