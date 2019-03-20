@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
+from django.http  import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from .models import *
 
 # Create your views here.
 
@@ -22,6 +24,6 @@ def signup(request):
 def login(request):
     return render(request, 'login.html')
 
-def index(request):
+def home(request):
     projects = Project.objects.all()
-    return render(request, 'index.html', {"date": date,"projects": projects})
+    return render(request, 'home.html', {"projects": projects})

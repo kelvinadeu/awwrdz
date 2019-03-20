@@ -25,6 +25,11 @@ class Profile(models.Model):
         searched_user = User.objects.get(username = username)
         return searched_user
 
+    @classmethod
+    def get_profiles(cls):
+        profiles = cls.objects.all()
+        return profiles
+
     def __str__(self):
         return self.user.username
 
@@ -46,6 +51,11 @@ class Projects(models.Model):
 
     class Meta:
         ordering = ["-id"]
+
+    @classmethod
+    def get_projects(cls):
+        projects = cls.objects.all()
+        return projects
 
 class Comment(models.Model):
     comment = models.CharField(max_length =80,null=True)
