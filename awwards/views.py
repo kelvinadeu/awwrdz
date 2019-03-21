@@ -74,3 +74,53 @@ def new_projects(request):
     else:
         form = ProjectsForm()
     return render(request, 'new_project.html', {"form": form})
+
+def projects(request,id):
+    date = dt.date.today()
+    post=Project.objects.get(id=id)
+    votes = Votes.objects.filter(post=post)
+    form = Votess()
+    # Empty list for each of the category of votes
+    design = []
+    usability = []
+    creativity = []
+    content = []
+    # End of list
+    # For loop to appent the votes to the empty list
+    for vote in votes:
+                design.append(vote.design)
+                usability.append(vote.usability)
+                creativity.append(vote.creativity)
+                content.append(vote.content)
+    # End of the for loop
+    de = []
+    us = []
+    cre = []
+    con = []
+    #
+    if len(usability)>0:
+            usa = (sum(usability)//len(usability))
+            us.append(usa)
+    if len(creativity)>0:
+            crea = (sum(creativity)//len(creativity))
+            cre.append(crea)
+    if len(design)>0:
+            des = (sum(design)//len(design))
+            de.append(des)
+    if len(content)>0:
+            cont = (sum(content)//len(content))
+            con.append(cont)
+    #
+    if request.method == 'POST':
+            vote = Votess(request.POST)
+            if vote.is_valid():
+                    design = vote.cleaned_data['design']
+                    usability = vote.cleaned_data['usability']
+                    content = vote.cleaned_data['content']
+                    creativity = vote.cleaned_data['creativity']
+                    rating = Votes(design=design,usability=usability,
+                                    content=content,creativity=creativity,
+                                    user=request.user,post=post)
+                    rating.save()
+                    return redirect('/')
+    return render(request,'projects.html',{"form":form, "de":de, "cre":cre, "con":con, "design":design, "us":us, "post":post})

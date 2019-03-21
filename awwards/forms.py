@@ -13,3 +13,12 @@ class ProjectsForm(forms.ModelForm):
     class Meta:
         model = Projects
         exclude = ('website',)
+
+class Votess(forms.Form):
+    design = forms.CharField(label='Design level', widget=forms.RadioSelect)
+
+    usability = forms.CharField(label='Usability level', widget=forms.RadioSelect)
+
+    creativity  = forms.CharField(label='Creativity level', widget=forms.RadioSelect)
+
+    content = forms.CharField(label='Content level', widget=forms.RadioSelect)
