@@ -76,7 +76,6 @@ def new_projects(request):
     return render(request, 'new_project.html', {"form": form})
 
 def projects(request,id):
-    date = dt.date.today()
     post=Project.objects.get(id=id)
     votes = Votes.objects.filter(post=post)
     form = Votess()
@@ -85,18 +84,18 @@ def projects(request,id):
     usability = []
     creativity = []
     content = []
-    # End of list
+
     # For loop to appent the votes to the empty list
     for vote in votes:
                 design.append(vote.design)
                 usability.append(vote.usability)
                 creativity.append(vote.creativity)
                 content.append(vote.content)
-    # End of the for loop
-    de = []
-    us = []
-    cre = []
-    con = []
+
+    design = []
+    usability = []
+    creativity = []
+    Content = []
     #
     if len(usability)>0:
             usa = (sum(usability)//len(usability))
