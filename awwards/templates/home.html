@@ -5,7 +5,7 @@
 
 <div style="background-color:#667E80;" id="main" class="container-fluid blue ">
   <h1 style="text-align:center; color:rgb(253, 253, 253);">
-  
+
 
   <div class="mail">
     <form role="search" action="{% url 'search_results' %}">
@@ -39,7 +39,6 @@
             <p style="text-align: center;"><img data-image-id="{{photos_item.id}}" data-toggle="modal" data-target="#{{photos_item.id}}" class="" src="{{photos_item.image.url}}" alt="pic" height="410px" width="620px"></p>
           </a>
 
-          <small style="font-family: 'Oregano', cursive;">Posted {{photos_item.posted_time|timesince}} ago</small>
           <!--  -->
           <h4>Reviews</h4>
           <h6 class="Reviews">
