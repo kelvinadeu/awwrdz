@@ -60,7 +60,7 @@
 
 #### -Python version 3.6
 
-#### -Django 2.0
+#### -Django 1.11
 
 #### -Pip
 

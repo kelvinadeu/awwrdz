@@ -99,16 +99,16 @@ def projects(request,id):
 
     if len(usability)>0:
             usability = (sum(usability)//len(usability))
-            usability.append(usa)
+            usability.append(usability)
     if len(creativity)>0:
             creativity = (sum(creativity)//len(creativity))
-            creativity.append(crea)
+            creativity.append(creativity)
     if len(design)>0:
             design = (sum(design)//len(design))
-            design.append(des)
+            design.append(design)
     if len(content)>0:
             content = (sum(content)//len(content))
-            content.append(cont)
+            content.append(content)
     #
     if request.method == 'POST':
             vote = Votess(request.POST)
