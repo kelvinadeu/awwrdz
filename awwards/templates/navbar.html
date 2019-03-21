@@ -3,9 +3,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="#">
-                <span style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-              </a>
               <div>
                 <a href="/">Home</a>
                 <a href="{% url 'signup'%}">Register</a>
@@ -32,9 +29,6 @@
                 </div>
                 <a href="{% url 'new_projects' %}><button id="btn-2">Submit Project</button></a>
 
-
-
-
               {% else %}
 
               <button class="btn-2"> <a href="#"><i style="color:blue;" class="fa fa-settings fa-2x"></i></a> <a href="/accounts/login" style="color: white;">Log In</a> </button>
@@ -46,9 +40,8 @@
         </div>
 
       <div id="mySidenav" class="sidenav">
-          <h3 style="color: white;"> <img float="right" src="https://www.midland.edu/news/images/awards.jpg" alt="" height="100px" width="110px"> Awwwards</h3>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times;</a>
-            <h6><a href="#" style="color: white;">{{ user.username|upper}}</a></h6>
+          <h3 style="color: white;"> <img float="center" src="https://www.midland.edu/news/images/awards.jpg" alt="" height="100px" width="110px"> Awwwards</h3>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"></a>
             <hr>
 
       </div>
