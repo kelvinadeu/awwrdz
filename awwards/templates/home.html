@@ -1,99 +1,93 @@
-{% extends 'base.html' %}
-{% block content %}
-{{ block.super}}
+{%extends 'base.html'%}
 {% load bootstrap4 %}
-<br>
-<br>
-<br>
+{% block content %}
+{{block.super}}
 
+<div style="background-color:#667E80;" id="main" class="container-fluid blue ">
+  <h1 style="text-align:center; color:rgb(253, 253, 253);"> <img float="right" src="" alt="" height="150px"> AWARDS </h1>
+  <h6 style="text-align:center; color:rgb(253, 253, 253);">{{date|date:"l d-F Y"}}</h6>
 
-<div class="container-fluid">
-  <img id="img" src="" alt="">
-  <h1 id="profile_h">{{user.username}}</h1>
-  <!-- <button id="button_h" type="button" class="btn btn-outline-secondary">Edit Profile</button> -->
-  <i id="fa_h" style="font-size:24px" class="fa fa-cog" aria-hidden="true"></i>
-  <div id="block">
-    <!-- <p id="p_h"><strong>2</strong> posts</p>
-    <p id="p_hh"><strong>1</strong> Followers<strong>1</strong> Following</p> -->
-
-    {% for prof in all_profile %}
-    <h4 id="p_hhh">{{prof.last_name}}</h4>
-      {% endfor %}
-<br>
-    <form method='post' action='{% url 'profile'%}'>
-      {% csrf_token %}
-      {{ form }}
-      <input type="hidden" id="admin" name="user_id" value="{{user.id}}">
-      <a href="{% url 'profile' %}" class="btn btn-info"></a>
+  <div class="mail">
+    <form role="search" action="{% url 'search_results' %}">
+      <input type="text" name="username" class="formStyle" placeholder="Search" required>
+      <button style="border:0px;" type="submit" class="formButton">Search</button>
     </form>
-
   </div>
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="background-color:#667E80;" class="row">
+
+      {% for photos_item in photos %}
+      <div class="col-md-6">
+        <div style="background-color: #4a696d;" class="card">
+          <div class="card-title">
+            {% if photos_item.profile.profile_pic %}
+            <section data-toggle="modal" data-target="#modalLoginAvatar"> <img style="border-radius: 50% ; padding: 0.15rem;  width: 45px; background: linear-gradient(to right bottom, #2cd88888, #2ec96970);" class=" img-circle" src="{{ photos_item.profile.profile_pic.url}}"
+                alt="" width="50px" height="50px""> <a href="/profiles/ {{ photos_item.profile.user.id}}" style=" color:black">{{ photos_item.profile.user.username}}</a> </section> <br>
+            {% else %}
+            <img data-toggle="modal" data-target="#modalLoginAvatar" style="border-radius: 50% ; padding: 0.15rem;  width: 45px; background: linear-gradient(to right bottom, #2cd88888, #2ec96970);" class=" img-circle" src="https://www.bristolbrewing.com/wp-content/uploads/2017/08/default-avatar.png"
+              alt="" width="50px" height="50px""> <a href="/profiles/ {{ photos_item.profile.user.id}}" style=" color:black">{{ photos_item.profile.user.username}}</a></section> <br>
+
+            {% endif %}
+          </div>
+
+          <p>{{ photos_item.image_caption | truncatechars:100 }}</p>
+
+          <a href="/projects/{{ photos_item.id}}">
+            <p style="text-align: center;"><img data-image-id="{{photos_item.id}}" data-toggle="modal" data-target="#{{photos_item.id}}" class="" src="{{photos_item.image.url}}" alt="pic" height="410px" width="620px"></p>
+          </a>
+
+          <small style="font-family: 'Oregano', cursive;">Posted {{photos_item.posted_time|timesince}} ago</small>
+          <!--  -->
+          <h4>Reviews</h4>
+          <h6 class="Reviews">
+
+            {% for review in photos_item.comments.all %}
+            <h6 class="">
+              <a class="user">
+                <em>{{ review.user.username }}</em>
+              </a>
+              <span class="">{{ review.comment }}</span>
+            </h6>
+            {% endfor %}
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<form method='POST' enctype="multipart/form-data">
-  {% csrf_token %}
-  {%for fields in form%}
-  {{ fields }}
-  {%endfor%}
-  <!-- <button type="submit" name="button"></button> -->
-</form>
+            {% if request.user.is_authenticated %}
+            <section class="input-row">
+              <i class="" aria-hidden="true"></i>
+              <div class="comment-input-wrapper">
+                <form action="{% url 'comment' image_id=photos_item.id %}" method="post">
+                  {% csrf_token %}
+                  {% bootstrap_form comm %}
+                  <!-- <button type='submit' class='btn btn-primary'>Review</button> -->
+                </form>
+              </div>
+              <div class="hidden-data {{ image.pk }}" style="display: none;">
+                <span class="image-pk">{{ image.pk }}</span>
+              </div>
+            </section>
+            {% endif %}
 
+          </h6>
+          <!--  -->
 
-<div class="">
-  {%for de in images%}
-  <img src="{{de.image_path.url}}" alt="">
-  {%endfor%}
-
-</div>
-
-
-
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-8">
-      <br>
-      <br>
-      <br>
-      <div class="card" style="width: 35rem;">
-
-        {% for all in new %}
-
-        <h5> {{all.username}} </h5>
-        <h6>{{all.image_location}}</h6>
+        </div>
       </div>
-      <div class="card">
-      <img src="{{all.image_path.url}}" alt="{{user.username}}">
-     <p class="card-text">description :{{all.image_description}}</p>
-  <p>   posted by:{{user.username}}</p>
-      <a href="#" class="btn btn-info">Like</a>
-
-    <div class="card-footer text-muted">
-
-      <form method="post" action='{% url 'comment' %}'>
-        {% csrf_token %}
-        {{ forms }}
-        <input type="text" name="image_id" value="{{image_id}}">
-        <input type="submit" name="Submit" value="Comment">
-      </form>
-    </div>
-    <ul class="List-group-flush">
-      {% for comment in comments %}
-      {% if comment.image_id.id == image.id %}
-      <li class="List-group-item">{{comment.comment}}</li>
-      {% endif %}
+      <br>
+      <br>
+      <br>
+      <br>
       {% endfor %}
-    </ul>
+      <br>
+      <br>
     </div>
-
-  {% endfor %}
-  <div class="col-md-3">
   </div>
+
+
+
 </div>
 
-{%endblock%}
+{% endblock %}
