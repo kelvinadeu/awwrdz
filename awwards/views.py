@@ -121,5 +121,5 @@ def projects(request,id):
                                     content=content,creativity=creativity,
                                     user=request.user,post=post)
                     rating.save()
-                    return redirect('/')
+                    return redirect('home')
     return render(request,'projects.html',{"form":form, "design":design, "creativity":creativity, "content":content, "design":design, "usability":usability, "post":post})
