@@ -10,7 +10,6 @@
                 <a href="/">Home</a>
                 <a href="{% url 'signup'%}">Register</a>
                 <a href="{% url 'login' %}">Login</a>
-                <a href="#">Contact</a>
               </div>
         </div>
         {% if user.is_authenticated %}
@@ -29,8 +28,6 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="/profile/">Profile</a>
-                        <a class="dropdown-item" href="/accounts/password/change">Change Password</a>
-                        <a class="dropdown-item" href="/logout">Log Out</a>
                         </div>
                 </div>
                 <a href="{% url 'new_projects' %}><button id="btn-2">Submit Project</button></a>
@@ -55,7 +52,7 @@
             <hr>
 
       </div>
-      
+
 
       <script>
             function openNav() {
