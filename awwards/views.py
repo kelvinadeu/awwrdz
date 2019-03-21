@@ -96,19 +96,19 @@ def projects(request,id):
     usability = []
     creativity = []
     Content = []
-    #
+
     if len(usability)>0:
-            usa = (sum(usability)//len(usability))
-            us.append(usa)
+            usability = (sum(usability)//len(usability))
+            usability.append(usa)
     if len(creativity)>0:
-            crea = (sum(creativity)//len(creativity))
-            cre.append(crea)
+            creativity = (sum(creativity)//len(creativity))
+            creativity.append(crea)
     if len(design)>0:
-            des = (sum(design)//len(design))
-            de.append(des)
+            design = (sum(design)//len(design))
+            design.append(des)
     if len(content)>0:
-            cont = (sum(content)//len(content))
-            con.append(cont)
+            content = (sum(content)//len(content))
+            content.append(cont)
     #
     if request.method == 'POST':
             vote = Votess(request.POST)
@@ -122,4 +122,4 @@ def projects(request,id):
                                     user=request.user,post=post)
                     rating.save()
                     return redirect('/')
-    return render(request,'projects.html',{"form":form, "de":de, "cre":cre, "con":con, "design":design, "us":us, "post":post})
+    return render(request,'projects.html',{"form":form, "design":design, "creativity":creativity, "content":content, "design":design, "usability":usability, "post":post})
