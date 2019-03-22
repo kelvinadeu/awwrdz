@@ -20,4 +20,11 @@ class ProfileTestClass(TestCase):
         self.new_profile.delete_profile()
         profiles = UserProfile.objects.all()
         self.assertTrue(len(profiles) == 0)
-    
+
+     def test_update_bio(self):
+        self.new_profile.save_profile()
+        self.new_profile = UserProfile.objects.get(id=1)
+        profile = self.new_profile
+        profile.update_bio('updated user-bio')
+        self.updated_profile = UserProfile.objects.get(id=1)
+        self.assertEqual(self.updated_profile.bio,'updated user-bio')
